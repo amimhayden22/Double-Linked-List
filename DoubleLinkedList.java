@@ -112,6 +112,8 @@ class DoubleLink {
 		      newNode.next = first;
 		      first = newNode;
 	}
+	
+} // End Class DoubleLink
 
 // Khamim
 // Membuat Class Main Untuk Menjalankan Program
@@ -151,4 +153,4 @@ class Main {
             };
         }
     }   
-}
+} // End Class Main
