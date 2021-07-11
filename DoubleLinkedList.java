@@ -6,7 +6,7 @@ import java.util.Scanner;
  
 //Kalau Ngedit Jangan Lupa Dikasih Komentar di baris yang diedit yaaa :)
 
-//Ghazi (Edited by Wahid)
+//Ghazi n Wahiid :)
 class Node {
     public String Nama;
     public Long Nim;
