@@ -33,7 +33,6 @@ class Node {
     public String getGender() {
         return Gender;
     }
- 
 } // end class Node
  
  
@@ -58,11 +57,11 @@ class DoubleLink {
     public Node deleteFirst() {
         Node temp = first;
         if (first.next == null)
-            last = null;
+	    last = null;
         else
             first.next.previous = null;
-        first = first.next;
-        return temp;
+	    first = first.next;
+            return temp;
     }
  
     // -------------------------------------------------------------
@@ -73,8 +72,8 @@ class DoubleLink {
             first = null;
         else
             last.previous.next = null;
-        last = last.previous;
-        return temp;
+            last = last.previous;
+            return temp;
     }
  
     // -------------------------------------------------------------
@@ -84,8 +83,7 @@ class DoubleLink {
         while (!indek.Nim.equals(nim)) {
             indek = indek.next;
             if (indek == null) {
-                System.out.println(ConsoleColors.RED + "NIM Tidak Ditemukan" +
-                    ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "NIM Tidak Ditemukan" + ConsoleColors.RESET);
                 return null; // data tidak ditemukan
             }
         }
