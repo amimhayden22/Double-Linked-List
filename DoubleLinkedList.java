@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Scanner;
  
 //Kalau Ngedit Jangan Lupa Dikasih Komentar di baris yang diedit yaaa :)
+
 //Ghazi (Edited by Wahid)
 class Node {
     public String Nama;
@@ -163,7 +164,7 @@ class DoubleLink {
         System.out.println("");
     }
  
-//Ghazi (Edited By Wahiid :))
+//Ghazi
     public boolean insert(String nama, Long nim, String gender) {
         Node newNode = new Node(nama, nim, gender);
         if (checkNim(nim)) {
@@ -207,7 +208,6 @@ class DoubleLink {
         return true;
     }
 
-//Wahid
     public boolean updateData(Long nim) {
         Scanner scan = new Scanner(System.in);
         Node indek = first;
@@ -260,10 +260,7 @@ class DoubleLink {
                  System.out.println("Pilihan tidak valid! Silahkan masukkan kembali");
                  break;
                  
-
                 }
-
-                
                 return true;
             }
             indek = indek.next;
@@ -299,12 +296,11 @@ class DoubleLink {
         public static final String PURPLE = "\033[0;35m";  // PURPLE
         public static final String CYAN = "\033[0;36m";    // CYAN
         public static final String WHITE = "\033[0;37m";   // WHITE
-    
     }
+	
 // Khamim
 // Membuat Class Main Untuk Menjalankan Program
-    public void menu() {
-        
+    public void menu() { 
 
         System.out.println("\n--------------------------[ MENU ]----------------------------");
         System.out.println("1. Memasukkan Data");
@@ -318,8 +314,6 @@ class DoubleLink {
         int opsi = scan.nextInt();
         scan.nextLine();
         switch (opsi) {
-
-            
 
             // Memasukkan Data
             case 1:
@@ -346,7 +340,6 @@ class DoubleLink {
                     hapus(inputNim);
                     System.out.println(ConsoleColors.GREEN + "Berhasil Menghapus Data" +
                     ConsoleColors.RESET);
-                  
                 }
                 break;
 
@@ -382,8 +375,6 @@ class DoubleLink {
                 }
                 break;
 
-            
-
             // Keluar Program
             case 6:
             System.out.println(ConsoleColors.GREEN + "Berhasil Keluar Dari Program" +
@@ -394,11 +385,9 @@ class DoubleLink {
 
             default:
             System.out.println(ConsoleColors.RED + "Pilihan tidak valid! Silahkan masukkan kembali" +
-                    ConsoleColors.RESET);
-                
+                    ConsoleColors.RESET);  
                 break;
         }
-
         menu();
     }
 } // end class DoubleLink2
