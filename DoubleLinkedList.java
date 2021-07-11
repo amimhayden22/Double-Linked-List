@@ -208,44 +208,189 @@ class DoubleLink {
     }
 
 //Wahid
+    public boolean updateData(Long nim) {
+        Scanner scan = new Scanner(System.in);
+        Node indek = first;
+        while (indek != null) {
+            if (Objects.equals(indek.Nim, nim)) {
+                //hapus(indek.Nim);
+                System.out.println("\n-----------------------[ Menu Update ]------------------------");
+                
+                System.out.println("1. Update Nama         -->   " +indek.Nama);
+                System.out.println("2. Update NIM          -->   " +indek.Nim);
+                System.out.println("3. Update Gender <L/W> -->   " +indek.Gender);
+                System.out.println("4. Keluar Menu Update");
 
+                int pilih = scan.nextInt();
+                switch (pilih) {
+                
+                //Update Nama
+                case 1:
+                 long nimtetap = indek.Nim;
+                 String gendertetap = indek.Gender;
+                 hapus(indek.Nim);
+                 System.out.print("\nMasukkan Nama baru: ");
+                 String inputNamaBaru = scan.next();
+                 insert(inputNamaBaru, nimtetap, gendertetap);
+
+                 break;
+                
+                 //Update NIM
+                 case 2:
+                 String namatetap = indek.Nama;
+                 gendertetap = indek.Gender;
+                 hapus(indek.Nim);
+                 System.out.print("\nMasukkan NIM baru: ");
+                 Long inputNimBaru = scan.nextLong();
+                 insert(namatetap, inputNimBaru, gendertetap);
+
+                 break;
+
+                 //Update Gender
+                 case 3:
+                 namatetap = indek.Nama;
+                 nimtetap = indek.Nim;
+                 hapus(indek.Nim);
+                 System.out.print("\nMasukkan Gender baru <P/W>: ");
+                 String inputGenderBaru = scan.next();
+                 insert(namatetap, nimtetap, inputGenderBaru);
+
+                 break;
+                 default:
+                 System.out.println("Pilihan tidak valid! Silahkan masukkan kembali");
+                 break;
+                 
+
+                }
+
+                
+                return true;
+            }
+            indek = indek.next;
+        }
+        System.out.println("NIM tidak ditemukan");
+        return false;
+    }
+
+    // -------------------------------------------------------------
+    public void peek() {
+        Node indek = first;
+        indek.tampilNode();
+        System.out.println("");
+    }
+
+    // -------------------------------------------------------------
+    public void clear() {
+        while (!isEmpty()) {
+            deleteFirst();
+        }
+    }
 
 // Khamim
 // Membuat Class Main Untuk Menjalankan Program
-class Main {
-    public static void main(String[] args) {
-        Scanner pilihMenu = new Scanner(System.in);
-        // Bagian sini aku masih belum paham, nanti yang dimasukkan apa saja bang
-        DoubleLinkedList theStack = new DoubleLinkedList();
-        while (true) {
-            theStack.menu();
-            pilihan = pilihMenu.nextInt();
-            switch (pilihan) {
-                case 1: {
-                    System.out.println("Menu Memasukkan Data");
-                    break;
+    public void menu() {
+        
+
+        System.out.println("\n--------------------------[ MENU ]----------------------------");
+        System.out.println("1. Memasukkan Data");
+        System.out.println("2. Menghapus Data");
+        System.out.println("3. Mengupdate Data");
+        System.out.println("4. Menampilkan Data");
+        System.out.println("5. Buat Data Baru (Clear Data)");
+        System.out.println("6. Keluar");
+        System.out.println("--------------------------------------------------------------");
+        Scanner scan = new Scanner(System.in);
+        int opsi = scan.nextInt();
+        scan.nextLine();
+        switch (opsi) {
+
+            
+
+            // Memasukkan Data
+            case 1:
+                System.out.println("\n------------------------[ Input Data ]------------------------");
+                System.out.print("Masukkan Nama         : ");
+                String inputNama = scan.nextLine();
+                System.out.print("Masukkan NIM          : ");
+                Long inputNim = Long.parseLong(scan.nextLine());
+                System.out.print("Masukkan Gender <L/W> : ");
+                String inputGender = scan.nextLine();
+                insert(inputNama, inputNim, inputGender);
+                break; 
+
+            // Menghapus Data
+            case 2:
+                
+                if (isEmpty()) {
+                    System.out.println(ConsoleColors.RED + "List Kosong" +
+                    ConsoleColors.RESET);
+                } else {
+                    System.out.println("\n------------------------[ Hapus Data ]------------------------");
+                    System.out.print("NIM Mahasiswa yang akan di-hapus: ");
+                    inputNim = Long.parseLong(scan.nextLine());
+                    hapus(inputNim);
+                    System.out.println(ConsoleColors.GREEN + "Berhasil Menghapus Data" +
+                    ConsoleColors.RESET);
+                  
                 }
-                case 2: {
-                    System.out.println("Menu Menghapus Data");
-                    break;
+                break;
+
+            // Mengupdate Data
+            case 3:
+                System.out.print("\nNIM Mahasiswa yang akan di-update: ");
+                Long nimupdate = Long.parseLong(scan.nextLine());
+                updateData(nimupdate);
+                break;
+
+            // Menampilkan Data
+            case 4:
+                
+                if (isEmpty()) {
+                    System.out.println(ConsoleColors.RED + "List Kosong" +
+                    ConsoleColors.RESET);
+                } else {
+                    System.out.println("\n---------------------[ Data Saat Ini ]------------------------");
+                    tampilGrup();
                 }
-                case 3: {
-                    System.out.println("Menu Memperbarui Data");
-                    break;
+                break;
+
+            // Clear data
+            case 5:
+                if (isEmpty()){
+                    System.out.println(ConsoleColors.RED + "List Kosong" +
+                    ConsoleColors.RESET);
                 }
-                case 4: {
-                    System.out.println("Menu Menampilkan Data");
-                    break;
+                else{
+                clear();
+                System.out.println(ConsoleColors.GREEN + "Berhasil Melakukan Clear Data" +
+                    ConsoleColors.RESET);
                 }
-                case 5: {
-                    System.out.println("Keluar");
-                    System.exit(0);
-                    break;
-                }
-                default: {
-                    System.out.println("Menu tidak ada!");
-                }
-            };
+                break;
+
+            
+
+            // Keluar Program
+            case 6:
+            System.out.println(ConsoleColors.GREEN + "Berhasil Keluar Dari Program" +
+            ConsoleColors.RESET);
+                scan.close();
+                System.exit(0);
+                break;
+
+            default:
+            System.out.println(ConsoleColors.RED + "Pilihan tidak valid! Silahkan masukkan kembali" +
+                    ConsoleColors.RESET);
+                
+                break;
         }
-    }   
-} // End Class Main
+
+        menu();
+    }
+} // end class DoubleLink2
+
+public class haduh { //ini main class nya ehe :)
+    public static void main(String[] args) throws IOException {
+        DoubleLink list = new DoubleLink();
+        list.menu();
+    }
+}
