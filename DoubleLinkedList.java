@@ -324,7 +324,12 @@ class DoubleLink {
                 Long inputNim = Long.parseLong(scan.nextLine());
                 System.out.print("Masukkan Gender <L/W> : ");
                 String inputGender = scan.nextLine();
-                insert(inputNama, inputNim, inputGender);
+		// Khamim
+		if (!inputNama.matches("[a-zA-Z]+")){
+                    System.out.println("Nama dan Gender harus huruf!");
+                }else{
+                    insert(inputNama, inputNim, inputGender);
+                }
                 break; 
 
             // Menghapus Data
