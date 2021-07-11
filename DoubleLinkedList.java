@@ -101,19 +101,114 @@ class DoubleLink {
         }
         return indek;
     }
- 
-//Ghazi
-    public void insertFirst(int theData) {
-		Node newNode = new Node(da);
-		if(isEmpty())
-			last = newNode;
-		else
-			first.previous = newNode;
-		      newNode.next = first;
-		      first = newNode;
-	}
 	
-} // End Class DoubleLink
+	
+    public void tampilMaju() {
+        System.out.format("+-----------------+---------------------------+--------------+%n");
+        System.out.format("| NIM             | Nama                      | Gender       |%n");
+        System.out.format("+-----------------+---------------------------+--------------+%n");
+        Node indek = first;
+        while (indek != null) {
+            indek.tampilNode();
+            indek = indek.next;
+        }
+        System.out.println("");
+    }
+
+    // -------------------------------------------------------------
+    public void tampilMundur() {
+        System.out.println("List (last-->first): ");
+        Node indek = last;
+        while (indek != null) {
+            indek.tampilNode();
+            indek = indek.previous;
+        }
+        System.out.println("");
+    }
+
+    // -------------------------------------------------------------
+    public Boolean checkNim(Long nim) {
+        Node indek = first;
+        boolean sama = true;
+        while (indek != null) {
+            if (Objects.equals(indek.Nim, nim)) {
+                sama = false;
+            }
+            indek = indek.next;
+        }
+        return sama;
+    }
+
+    // -------------------------------------------------------------
+    public void tampilGrup() {   
+        System.out.format("+-----------------+---------------------------+--------------+%n");
+        System.out.format("| NIM             | Nama                      | Gender       |%n");
+        System.out.format("+-----------------+---------------------------+--------------+%n");
+        Node indek = first;
+        while (indek != null) {
+            if (indek.getGender().equals("L")) {
+                indek.tampilNode();
+            } else {
+            }
+            indek = indek.next;
+        }
+        indek = first;
+        while (indek != null) {
+            if (indek.getGender().equals("W")) {
+                indek.tampilNode();
+            } else {
+            }
+            indek = indek.next;
+        }
+        System.out.println("");
+    }
+ 
+//Ghazi (Edited By Wahiid :))
+    public boolean insert(String nama, Long nim, String gender) {
+        Node newNode = new Node(nama, nim, gender);
+        if (checkNim(nim)) {
+            if (isEmpty()) {
+                last = newNode;
+                first = newNode;
+                System.out.println(ConsoleColors.GREEN + "Berhasil Memperbarui Data" +
+                    ConsoleColors.RESET);
+            } else {
+                Node indek = first;
+                while (indek != null) {
+                    if (indek.Nim > nim) {
+                        if (indek == first) {
+                            newNode.next = first;
+                            newNode.previous = null;
+                            first.previous = newNode;
+                            first = newNode;
+                            return true;
+                        } else {
+                            indek = indek.previous;
+                            newNode.next = indek.next;
+                            newNode.previous = indek;
+                            indek.next.previous = newNode;
+                            indek.next = newNode;
+                            return true;
+                        }
+                    }
+                    indek = indek.next;
+                }
+                newNode.next = null;
+                newNode.previous = last;
+                last.next = newNode;
+                last = newNode;
+                return true;
+            }
+        } else {
+            System.out.println(ConsoleColors.RED + "NIM Sudah Digunakan" +
+                    ConsoleColors.RESET);
+            
+        }
+        return true;
+    }
+
+//Wahid
+
 
 // Khamim
 // Membuat Class Main Untuk Menjalankan Program
