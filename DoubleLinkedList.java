@@ -326,7 +326,15 @@ class DoubleLink {
                 String inputGender = scan.nextLine();
 		// Khamim
 		if (!inputNama.matches("[a-zA-Z]+")){
+                    System.out.println("\n------------------------[ Input Data Ulang]------------------------");
                     System.out.println("Nama dan Gender harus huruf!");
+                    System.out.print("Masukkan Nama         : ");
+                    String reInputNama = scan.nextLine();
+                    System.out.print("Masukkan NIM          : ");
+                    Long reInputNim = Long.parseLong(scan.nextLine());
+                    System.out.print("Masukkan Gender <L/W> : ");
+                    String reInputGender = scan.nextLine();
+                    insert(reInputNama, reInputNim, reInputGender);
                 }else{
                     insert(inputNama, inputNim, inputGender);
                 }
